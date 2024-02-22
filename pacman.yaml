@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pacman
+  namespace: pacman
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: pacman
+  template:
+    metadata:
+      labels:
+        app: pacman
+    spec:
+      containers:
+      - name: pacman
+        image: ghcr.io/luisloureiroctw/pacman:2.0
+        ports:
+        - containerPort: 80
+        resources:
+          requests:
+            memory: "64Mi"    # Request 64 megabytes of memory
+            cpu: "1m"       # Request 250 milliCPU (equivalent to 0.25 CPU cores)
+          limits:
+            memory: "128Mi"   # Limit memory to 128 megabytes
+            cpu: "1m"       # Limit CPU to 500 milliCPU (equivalent to 0.5 CPU cores)
