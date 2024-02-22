@@ -13,6 +13,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: pacman
+                name: pacman-service
                 port:
                   number: 80
